@@ -201,7 +201,7 @@ def update_new_deadline(message, subject):
 
     if is_valid_date(date):
         subject_cell = worksheet.find(subject)
-        worksheet.update_cell(subject_cell.row, 2+int(work_number), date)
+        worksheet.update_cell(subject_cell.row, 2 + int(work_number), date)
         bot.send_message(message.chat.id, "Дедлайн добавлен")
         start(message)
     else:
