@@ -3,7 +3,7 @@ import time
 import unittest
 
 import responses
-from vkapi.friends import FriendsResponse, get_friends, get_mutual
+from vkapi.friends import FriendsResponse, get_friends, get_mutua
 
 
 class FriendsTestCase(unittest.TestCase):
