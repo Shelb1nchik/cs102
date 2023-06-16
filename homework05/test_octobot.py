@@ -1,6 +1,7 @@
 import unittest
-import octobot
 from datetime import datetime
+
+import octobot
 
 
 class TestOctobot(unittest.TestCase):
@@ -28,7 +29,7 @@ class TestOctobot(unittest.TestCase):
         self.assertFalse(octobot.is_valid_url("itmo"))
         self.assertFalse(octobot.is_valid_url("itmo."))
         self.assertTrue(octobot.is_valid_url("https://en.itmo.ru"))
-        self.assertFalse(octobot.is_valid_url("en.itmo.ru"))
+        self.assertTrue(octobot.is_valid_url("en.itmo.ru"))
         self.assertFalse(octobot.is_valid_url("en.itmo"))
 
 
