@@ -17,14 +17,15 @@ def ego_network(
     :param user_id: Идентификатор пользователя, для которого строится граф друзей.
     :param friends: Идентификаторы друзей, между которыми устанавливаются связи.
     """
-    my_friends = get_mutual(user_id, target_uids=friends, count=len(friends))  # type: ignore
-    network = [
-        (friend.get("id"), accaunt)  # type: ignore
-        for friend in my_friends  # type: ignore
-        if (friend_id := friend.get("id")) is not None and (common_friends := friend.get("common_friends")) is not None  # type: ignore
-        for accaunt in common_friends
-    ]
-    return network  # type: ignore
+    coordinates = []  # пустой список, в который будут добавляться координаты друзей.
+    friends_ = get_mutual(user_id, target_uids=friends, count=len(friends))  # type: ignore
+    for friend in friends_:  # перебор каждого объекта в списке
+        friend_id = friend.get("id")  # type: ignore
+        common_friends = friend.get("common_friends")  # type: ignore
+        if friend_id is not None and common_friends is not None:  # type: ignore
+            for person in common_friends:  # перебираются все элементы в списке
+                coordinates.append((friend_id, person))  # координаты добавляются в список coordinates.
+    return coordinates
 
 
 def plot_ego_network(net: tp.List[tp.Tuple[int, int]]) -> None:
