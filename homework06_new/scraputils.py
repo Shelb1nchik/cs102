@@ -1,8 +1,7 @@
 import requests  # type: ignore
 from bs4 import BeautifulSoup
-from db import engine, News
+from db import News, engine
 from sqlalchemy.orm import sessionmaker
-
 
 Session = sessionmaker(bind=engine)
 session = Session()
